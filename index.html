@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دعوة زفاف ملكية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B38B2D;
+            --light-gold: #E8D9A0;
+            --black: #0A0A0A;
+            --dark-bg: #1A1A1A;
+            --light-bg: #2D2D2D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Naskh Arabic', serif;
+            background-color: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #EEE;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 20%);
+            padding: 20px;
+        }
+        
+        .invitation-card {
+            width: 100%;
+            max-width: 900px;
+            min-height: 650px;
+            background: 
+                linear-gradient(135deg, var(--dark-bg) 0%, var(--black) 100%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23D4AF37" opacity="0.03" d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>');
+            border-radius: 20px;
+            box-shadow: 
+                0 0 30px rgba(0, 0, 0, 0.8),
+                0 0 60px rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.5s ease;
+        }
+        
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 10px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .gold-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 45%, var(--gold) 50%, transparent 55%);
+            background-size: 300% 300%;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: shine 8s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .quran-verse {
+            font-size: clamp(16px, 3vw, 22px);
+            color: var(--light-gold);
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .main-title {
+            font-size: clamp(28px, 6vw, 48px);
+            font-family: 'Reem Kufi', sans-serif;
+            color: var(--gold);
+            margin: 15px 0;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .main-title::before, .main-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        .main-title::before {
+            right: 110%;
+        }
+        
+        .main-title::after {
+            left: 110%;
+        }
+        
+        .content {
+            display: flex;
+            flex-grow: 1;
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+            flex-direction: column;
+        }
+        
+        .groom-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .groom-image-container {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.5s ease;
+        }
+        
+         .groom-image-container {
+        width: 100%;
+        height: 300px; /* يمكن تعديل الارتفاع حسب الحاجة */
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 2px solid rgba(212, 175, 55, 0.3);
+        transition: all 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #1A1A1A; /* لون خلفية احتياطي */
+    }
+    
+    .groom-image {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+    }
+    
+    @media (max-width: 768px) {
+        .groom-image-container {
+            height: 250px;
+        }
+    }
+        
+        .details-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .hosts-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .host {
+        text-align: center;
+        padding: 12px;
+        position: relative;
+        flex: 1;
+        min-width: 150px;
+    }
+    
+    .host::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        border-radius: 8px;
+        pointer-events: none;
+    }
+    
+    .host-title {
+        font-size: clamp(14px, 3vw, 18px);
+        color: var(--gold);
+        margin-bottom: 5px;
+    }
+    
+    .host-name {
+        font-size: clamp(16px, 3.5vw, 22px);
+        font-weight: 600;
+        color: #FFF;
+        line-height: 1.4;
+    }
+    
+    .parent-name {
+        display: block;
+        font-size: clamp(12px, 2.5vw, 16px);
+        color: var(--light-gold);
+        font-weight: 500;
+        margin-top: 3px;
+    }
+        
+        .host-name {
+            font-size: clamp(16px, 3.5vw, 22px);
+            font-weight: 600;
+            color: #FFF;
+        }
+        
+        .and-sign {
+            font-size: clamp(18px, 4vw, 24px);
+            color: var(--gold);
+            margin: 0 5px;
+        }
+        
+        .invitation-text {
+            font-size: clamp(16px, 3vw, 20px);
+            text-align: center;
+            margin: 15px 0;
+            line-height: 1.6;
+            color: #DDD;
+        }
+        
+        /* .groom-name {
+            font-size: clamp(20px, 4.5vw, 28px);
+            font-weight: 700;
+            color: var(--gold);
+            text-align: center;
+            margin: 10px 0;
+            font-family: 'Reem Kufi', sans-serif;
+        } */
+
+         .groom-name {
+        font-size: clamp(20px, 4.5vw, 28px);
+        font-weight: 700;
+        color: var(--gold);
+        text-align: center;
+        margin: 15px 0;
+        font-family: 'Reem Kufi', sans-serif;
+        line-height: 1.6;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 8px 15px;
+    }
+    
+    .groom-name .title {
+        display: inline-block;
+        position: relative;
+        padding-bottom: 5px;
+    }
+    
+    .groom-name .title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to left, var(--gold), transparent);
+    }
+    
+    .groom-name .honorific {
+        font-size: 0.85em;
+        color: var(--light-gold);
+        position: relative;
+        padding: 0 8px;
+    }
+    
+    .groom-name .honorific::before,
+    .groom-name .honorific::after {
+        content: "•";
+        color: rgba(212, 175, 55, 0.5);
+        margin: 0 5px;
+    }
+    
+    .groom-name .main-name {
+        font-size: 1.1em;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        letter-spacing: 1px;
+        flex-basis: 100%;
+        margin-top: 5px;
+    }
+    
+    @media (max-width: 768px) {
+        .groom-name {
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .groom-name .honorific::before,
+        .groom-name .honorific::after {
+            display: none;
+        }
+        
+        .groom-name .main-name {
+            flex-basis: auto;
+            margin-top: 10px;
+        }
+    }
+        
+      .event-details {
+        background: rgba(10, 10, 10, 0.5);
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid rgba(212, 175, 55, 0.1);
+        margin-top: 20px;
+    }
+    
+    .detail-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        font-size: clamp(14px, 2.5vw, 18px);
+        align-items: center;
+    }
+    
+    .detail-label {
+        color: var(--light-gold);
+        font-weight: 500;
+        width: 25%;
+    }
+    
+    .detail-value {
+        color: #FFF;
+        font-weight: 600;
+        text-align: right;
+        width: 70%;
+    }
+    
+    .location-link {
+        color: var(--gold);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s ease;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background: rgba(212, 175, 55, 0.1);
+    }
+    
+    .location-link:hover {
+        background: rgba(212, 175, 55, 0.2);
+        transform: translateX(-5px);
+    }
+    
+    .location-icon {
+        margin-left: 8px;
+        font-size: 1.2em;
+    }
+    
+    @media (max-width: 768px) {
+        .detail-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .detail-label,
+        .detail-value {
+            width: 100%;
+            text-align: right;
+        }
+        
+        .detail-label {
+            margin-bottom: 3px;
+        }
+    }
+        
+        .footer-note {
+            font-size: clamp(12px, 2.5vw, 16px);
+            color: #AAA;
+            text-align: center;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        .ornament {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0.1;
+            z-index: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23D4AF37" d="M50 0 Q70 40 50 80 Q30 40 50 0 M30 20 Q50 40 70 20 Q50 0 30 20 M50 100 Q30 60 50 20 Q70 60 50 100 M30 80 Q50 60 70 80 Q50 100 30 80"/></svg>');
+            background-repeat: no-repeat;
+        }
+        
+        .top-left {
+            top: 15px;
+            left: 15px;
+        }
+        
+        .bottom-right {
+            bottom: 15px;
+            right: 15px;
+            transform: rotate(180deg);
+        }
+        
+        .gold-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: float 15s infinite linear;
+        }
+
+ .gold-stamp {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        width: 90px;
+        height: 90px;
+        background: radial-gradient(circle, var(--gold) 0%, var(--dark-gold) 100%);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Reem Kufi', sans-serif;
+        color: var(--black);
+        transform: rotate(-15deg);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 2;
+        padding: 5px;
+    }
+    
+    .stamp-content {
+        text-align: center;
+        line-height: 1.2;
+    }
+    
+    .stamp-name {
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 2px;
+    }
+    
+    .stamp-family {
+        font-weight: 600;
+        font-size: 18px;
+        border-top: 1px solid var(--black);
+        padding-top: 2px;
+    }
+    
+    .stamp-decoration {
+        font-size: 12px;
+        margin-top: 3px;
+        color: rgba(10, 10, 10, 0.7);
+    }
+    
+    @media (max-width: 768px) {
+        .gold-stamp {
+            width: 70px;
+            height: 70px;
+            bottom: 20px;
+            left: 20px;
+        }
+        
+        .stamp-name {
+            font-size: 18px;
+        }
+        
+        .stamp-family {
+            font-size: 14px;
+        }
+        
+        .stamp-decoration {
+            font-size: 10px;
+        }
+    }
+  @media (max-width: 768px) {
+    .gold-stamp {
+      width: 80px;
+      height: 80px;
+      bottom: 20px;
+      left: 20px;
+    }
+    
+    .stamp-text {
+      font-size: 18px;
+    }
+    
+    .stamp-decoration {
+      font-size: 10px;
+    }
+  }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        
+        .gold-stamp {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--gold) 0%, var(--dark-gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Reem Kufi', sans-serif;
+            font-weight: 700;
+            color: var(--black);
+            font-size: 12px;
+            transform: rotate(-15deg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+        
+        @media (min-width: 768px) {
+            .invitation-card {
+                padding: 40px;
+            }
+            
+            .content {
+                flex-direction: row;
+                gap: 40px;
+            }
+            
+            .groom-image-container {
+                height: 280px;
+            }
+            
+            .ornament {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .gold-stamp {
+                width: 70px;
+                height: 70px;
+                font-size: 13px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .invitation-card {
+                padding: 50px;
+            }
+            
+            .ornament {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .gold-stamp {
+                width: 80px;
+                height: 80px;
+                font-size: 14px;
+            }
+            
+            .main-title::before, .main-title::after {
+                width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-card" id="invitationCard">
+        <div class="gold-frame"></div>
+        <div class="gold-particles" id="goldParticles"></div>
+        <div class="ornament top-left"></div>
+        <div class="ornament bottom-right"></div>
+        
+        <div class="header">
+            <div class="quran-verse">
+                ﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ﴾ [الروم:21]
+            </div>
+            
+            <h1 class="main-title">أفراح آل الخضر</h1>
+        </div>
+        
+        <div class="content">
+            <div class="groom-section">
+                  <div class="groom-image-container">
+                    <img src="img/montaserimage.jpg" alt="صورة العريس" class="groom-image">
+                </div>
+                
+                <div class="invitation-text">نرتقي بشرف حضوركم الكريم </div>
+                
+             <div class="groom-name">
+    <span class="title">العريس</span>
+    <span class="honorific">الدكتور</span>
+    <span class="honorific">المحامي</span>
+    <span class="main-name">المنتصر بالله أسامة الخضر</span>
+</div>
+            </div>
+            
+            <div class="details-section">
+                <div>
+                   <div class="hosts-container">
+    <div class="host">
+        <div class="host-title">المحامي</div>
+        <div class="host-name">
+            أسامة مصطفى الخضر
+            <span class="parent-name">(أبو المنتصر)</span>
+        </div>
+    </div>
+    
+    <div class="and-sign">و</div>
+    
+    <div class="host">
+        <div class="host-title">الحاج</div>
+        <div class="host-name">
+            حربي جاد الله الطويل
+            <span class="parent-name">(أبو محمد)</span>
+        </div>
+    </div>
+</div>
+</div>
+                
+             <div class="event-details">
+    <div class="detail-item">
+        <span class="detail-label">اليوم:</span>
+        <span class="detail-value">الجمعة الموافق ٣ / ١٠ / ٢٠٢٥</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">الوقت:</span>
+        <span class="detail-value">من الساعة التاسعة حتى الحادية عشرة مساءً</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">المكان:</span>
+        <span class="detail-value">قصر جونيا للإحتفالات - عين الباشا</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">العنوان:</span>
+        <span class="detail-value">نزول صافوط - مقابل كازية باب عمان</span>
+    </div>
+    <div class="detail-item">
+        <span class="detail-label">الموقع:</span>
+        <span class="detail-value">
+            <a href="https://maps.app.goo.gl/AUWq2ptSbyGuEvEL7" class="location-link" target="_blank">
+                <span class="location-icon">📍</span> اضغط هنا للذهاب إلى الموقع
+            </a>
+        </span>
+    </div>
+</div>
+                </div>
+        </div>
+         <div class="footer-note" >ودامت الأفراح حليقة دياركم العامرة </div>
+  <div class="gold-stamp">
+    <div class="stamp-content">
+        <div class="stamp-decoration">✻</div>
+        <div class="stamp-name">مصطفى</div>
+        <div class="stamp-family">الخضر</div>
+        <div class="stamp-decoration">✻</div>
+    </div>
+</div>
+    </div>
+
+    <script>
+        function createParticles() {
+            const container = document.getElementById('goldParticles');
+            const card = document.getElementById('invitationCard');
+            const cardRect = card.getBoundingClientRect();
+            
+            container.innerHTML = '';
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // حجم عشوائي
+                const size = Math.random() * 4 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // موقع بداية عشوائي
+                const startX = Math.random() * cardRect.width;
+                const startY = cardRect.height + (Math.random() * 100);
+                particle.style.left = `${startX}px`;
+                particle.style.top = `${startY}px`;
+                
+                // تأخير عشوائي
+                const delay = Math.random() * 15;
+                particle.style.animationDelay = `${delay}s`;
+                
+                // مدة عشوائية
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        // تأثير التوهج عند حركة الماوس
+        function setupHoverGlow() {
+            const card = document.getElementById('invitationCard');
+            
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+            
+            // إضافة توهج متحرك
+            const style = document.createElement('style');
+            style.textContent = `
+                .invitation-card::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: radial-gradient(
+                        circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                        rgba(212, 175, 55, 0.15) 0%, 
+                        transparent 70%
+                    );
+                    pointer-events: none;
+                    z-index: 1;
+                    transition: background 0.3s ease;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // تأثير الظهور عند التحميل
+        function animateCardEntry() {
+            const card = document.getElementById('invitationCard');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        }
+        
+        // تهيئة جميع التأثيرات عند تحميل الصفحة
+        window.addEventListener('load', () => {
+            createParticles();
+            setupHoverGlow();
+            animateCardEntry();
+            
+            // إعادة إنشاء الجسيمات كل 20 ثانية
+            setInterval(createParticles, 20000);
+        });
+        
+        // إعادة إنشاء الجسيمات عند تغيير حجم النافذة
+        window.addEventListener('resize', createParticles);
+    </script>
+</body>
+</html>
